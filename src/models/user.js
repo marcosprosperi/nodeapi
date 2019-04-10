@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 
+//user bcryp y passaport para implemntar login
+
 const userSchema = new mongoose.Schema(
   {
     firstname: String,
     lastname: String,
     email: {
-      type: String,
+      type: Str
       required: true,
       unique: true
     },
