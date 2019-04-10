@@ -1,17 +1,18 @@
 import { Router } from "express";
+import Product from "../models/product";
 
 const productRoute = Router();
 
-productRoute.get("/", (req, res) => {
-  res.send(`body: product get `);
-});
-
-productRoute.get("/:id", (req, res) => {
-  res.send(`body: product get by id ${req.params.id} `);
-});
-
 productRoute.post("/", (req, res) => {
-  if (req.body) res.send(`body: product post body `);
+  if (req.body) {
+    Product.create(req.body)
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch(() => {
+        res.sendStatus(400);
+      });
+  }
 });
 
 export default productRoute;
